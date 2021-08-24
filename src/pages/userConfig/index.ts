@@ -3,7 +3,7 @@ import { RegistComponents } from '../registComponents';
 
 export class UserConfig {
   public store = new Store();
-  public RegistComponents = new RegistComponents();
+  public registComponents = new RegistComponents();
   constructor() {}
 
   getStoreData() {

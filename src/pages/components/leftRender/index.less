@@ -8,8 +8,23 @@
   display: flex;
   flex-direction: row;
   .left-nav {
-    width: 50px;
+    width: 81px;
     height: 100%;
+    background-color: #444;
+    ul {
+      padding: 0;
+      margin: 0 15px;
+    }
+    li {
+      list-style: none;
+      line-height: 35px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .active {
+      color: blue;
+      border-bottom: 2px solid blueviolet;
+    }
   }
   .left-content {
     flex-grow: 1;
