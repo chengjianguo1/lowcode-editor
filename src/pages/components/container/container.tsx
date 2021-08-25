@@ -7,7 +7,7 @@ export default function Container(props: PropsWithChildren<Props>) {
 
   return (
     <div className="container-config" style={style}>
-      Container
+      {children}
     </div>
   );
 }

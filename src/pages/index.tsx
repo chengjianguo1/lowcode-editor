@@ -4,10 +4,13 @@ import Header from './components/header/header';
 import LeftRender from './components/leftRender/leftRender';
 import RightRender from './components/rightRender/rightRender';
 import Container from './components/container/container';
+import Content from './components/content';
 import { configContext } from './layouts';
 
 export default function IndexPage() {
   const config = useContext(configContext);
+  console.log(config.getStoreData());
+  const containerCanvas = config.getStoreData().container;
 
   return (
     <>
@@ -25,8 +28,10 @@ export default function IndexPage() {
         <LeftRender config={config} style={{ height: '100%' }}></LeftRender>
         <Container
           config={config}
-          style={{ height: 'calc(100% - 10px)', margin: '5px' }}
-        ></Container>
+          style={{ height: '100%', border: '5px solid #000' }}
+        >
+          <Content config={config} style={{ ...containerCanvas }}></Content>
+        </Container>
         <RightRender config={config} style={{ height: '100%' }}></RightRender>
       </div>
     </>

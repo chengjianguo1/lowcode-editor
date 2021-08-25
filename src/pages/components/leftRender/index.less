@@ -4,30 +4,58 @@
   top: 40px;
   bottom: 0;
   width: 270px;
-  background-color: #808080;
+  background-color: #000;
   display: flex;
   flex-direction: row;
   .left-nav {
-    width: 81px;
+    width: 78px;
     height: 100%;
-    background-color: #444;
+    background-color: #1a212e;
+    color: #fff;
+    margin-right: 3px;
     ul {
       padding: 0;
       margin: 0 15px;
     }
     li {
       list-style: none;
-      line-height: 35px;
+      // line-height: 35px;
+      height: 40px;
+      padding-top: 10px;
       text-align: center;
       cursor: pointer;
     }
-    .active {
-      color: blue;
-      border-bottom: 2px solid blueviolet;
+    .active::after {
+      display: block;
+      content: '';
+      margin-top: 5px;
+      background-color: #0333ff;
+      height: 6px;
+      border-radius: 3px;
     }
   }
   .left-content {
     flex-grow: 1;
     height: 100%;
+    background-color: #1a212e;
+    .content-component-list {
+      display: grid;
+      // grid-row: 20px;
+      grid-template-columns: repeat(3, 33.3%);
+      .component-item {
+        // color: #1890ff;
+        color: #fff;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        font-size: 12px;
+        height: 45px;
+        cursor: pointer;
+      }
+      .component-item > span:first-child {
+        line-height: 30px;
+        font-size: 18px;
+      }
+    }
   }
 }

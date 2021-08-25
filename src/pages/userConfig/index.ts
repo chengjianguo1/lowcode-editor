@@ -7,6 +7,18 @@ export class UserConfig {
   constructor() {}
 
   getStoreData() {
-    return this.store.getData();
+    return this.store.getBlocksData();
+  }
+
+  forceUpdate() {
+    this.store.forceUpdate();
+  }
+
+  setForceUpdate(fn: Function = () => {}) {
+    this.store.setForceUpdate(fn);
+  }
+
+  setStoreData(block: any) {
+    this.store.setData(block);
   }
 }

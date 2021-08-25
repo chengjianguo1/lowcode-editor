@@ -1,8 +1,15 @@
-import React, { PropsWithChildren } from 'react';
+import { UserConfig } from '@/pages/userConfig';
+import React, { PropsWithChildren, useRef } from 'react';
 import { ImageComProps } from '../../components/interface';
 
-export default function ImageCom(props: PropsWithChildren<ImageComProps>) {
-  const { children, url, style, ...rest } = props;
+interface IConfig {
+  config: UserConfig;
+}
+
+export default function ImageCom(
+  props: PropsWithChildren<ImageComProps & IConfig>,
+) {
+  const { children, url, config, style, ...rest } = props;
 
   return (
     <>

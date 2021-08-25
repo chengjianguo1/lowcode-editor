@@ -24,8 +24,7 @@ const ComponentRegistList = [
 const config = new UserConfig();
 export const configContext = createContext<UserConfig>(config);
 
-// todo 注册组件
-
+// 注册组件
 ComponentRegistList.forEach((comobj) => {
   config.registComponents.registComponent({
     type: comobj.type,

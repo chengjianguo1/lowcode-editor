@@ -6,26 +6,30 @@ export const initialData: IStoreData = {
     height: 667,
   },
   block: [],
-  modalMap: {},
-  dataSource: {},
-  globalState: {},
-  modalConfig: {},
 };
 
 export class Store {
   constructor(
-    public storeDataList: IStoreData[] = [initialData],
+    public storeData: IStoreData = initialData,
     public listeners: Array<Function> = [],
     public current: number = 0,
     public forceupdate: Function = () => {},
   ) {}
 
-  getData() {
-    return this.storeDataList[this.current];
+  getIndexBlock() {
+    return this.storeData.block[this.current];
+  }
+
+  getBlocksData() {
+    return this.storeData;
   }
 
   getCurrent() {
     return this.current;
+  }
+
+  setData(block: any) {
+    return this.storeData.block.push(block);
   }
 
   setIndex(num: number) {
