@@ -26,8 +26,13 @@ export default function Content(props: PropsWithChildren<Props>) {
         draggable="true"
         style={{ height: '100%' }}
       >
-        {storeData?.block.map((block) => {
-          return block.component({ ...block.props, config });
+        {storeData?.block.map((block, index) => {
+          return block.component({
+            ...block.props,
+            config,
+            id: block.id,
+            type: block.type,
+          });
         })}
       </div>
     </div>

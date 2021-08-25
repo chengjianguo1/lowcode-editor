@@ -7,8 +7,8 @@ export const wrapperEvent = (config?: UserConfig) => {
       console.log(e);
     },
     onMouseMove(e: React.MouseEvent) {
-      console.log(e);
-      console.log(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+      //   console.log(e);
+      //   console.log(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
     },
   };
 };
