@@ -13,5 +13,5 @@ Start the dev server,
 ```bash
 $ yarn start
 ```
-![Image](https://github.com/chengjianguo1/lowcode-editor/blob/master/src/img/test.png)
+![Image](blob:https://ant.design/c0083427-67b9-4455-82e5-c9348567fad5)
 
