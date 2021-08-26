@@ -19,7 +19,7 @@ const contentComponentList: Array<LeftRegistComponentMapItem> = [
 export default function LeftRender(props: PropsWithChildren<Props>) {
   const { children, style, classNames, config, extra, ...rest } = props;
   const [currentTab, setCurrentTab] = useState<string>('components');
-  console.log(config?.getStoreData());
+  // console.log(config?.getStoreData());
 
   const changeTab = (type: string) => {
     setCurrentTab(type);

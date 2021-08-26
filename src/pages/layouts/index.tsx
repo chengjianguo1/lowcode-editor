@@ -32,7 +32,7 @@ ComponentRegistList.forEach((comobj) => {
   });
 });
 
-console.log(config.registComponents.getRegistComponents(), '------');
+// console.log(config.registComponents.getRegistComponents(), '------');
 export default function Layout({ children }: IRouteComponentProps) {
   return (
     <configContext.Provider value={config}>{children}</configContext.Provider>

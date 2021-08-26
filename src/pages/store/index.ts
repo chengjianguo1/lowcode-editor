@@ -12,7 +12,7 @@ export class Store {
   constructor(
     public storeData: IStoreData = initialData,
     public listeners: Array<Function> = [],
-    public current: number = 0,
+    public current: number = -1,
     public forceupdate: Function = () => {},
   ) {}
 
@@ -29,7 +29,11 @@ export class Store {
   }
 
   setData(block: any) {
-    return this.storeData.block.push(block);
+    this.storeData.block.push(block);
+  }
+
+  setBlocks(blocks: any) {
+    this.storeData.block = blocks;
   }
 
   setIndex(num: number) {

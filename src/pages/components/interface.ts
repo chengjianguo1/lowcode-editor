@@ -22,3 +22,12 @@ export interface InputComProps {
   style?: CSSProperties;
   text?: string;
 }
+
+export interface IConfig {
+  config: UserConfig;
+  id: string;
+  type: string;
+  focus: boolean;
+  index: number;
+  blockEvent: any;
+}

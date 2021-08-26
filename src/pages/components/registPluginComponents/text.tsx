@@ -1,13 +1,34 @@
 import React, { PropsWithChildren } from 'react';
-import { Input } from 'antd';
+import classnames from 'classnames';
 
-import { InputComProps } from '../../components/interface';
+import { InputComProps, IConfig } from '../../components/interface';
+import './index.less';
 
-export default function TextCom(props: PropsWithChildren<InputComProps>) {
-  const { children, text, style, ...rest } = props;
+export default function TextCom(
+  props: PropsWithChildren<InputComProps & IConfig>,
+) {
+  const {
+    children,
+    text,
+    style,
+    blockEvent,
+    config,
+    index,
+    focus,
+    id,
+    ...rest
+  } = props;
 
   return (
-    <div style={style} {...rest}>
+    <div
+      className={classnames({
+        focus: focus,
+        custom_text: true,
+      })}
+      style={style}
+      {...rest}
+      {...blockEvent(config, index, id)}
+    >
       {text}
     </div>
   );

@@ -9,7 +9,7 @@ import { configContext } from './layouts';
 
 export default function IndexPage() {
   const config = useContext(configContext);
-  console.log(config.getStoreData());
+  // console.log(config.getStoreData());
   const containerCanvas = config.getStoreData().container;
 
   return (

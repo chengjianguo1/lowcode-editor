@@ -19,10 +19,15 @@ interface Block {
   type: string;
   id: string;
   component: any;
+  focus: boolean;
+  startX: number;
+  startY: number;
   props: {
     text?: string;
     url?: string;
     style: CSSProperties;
+    top: number;
+    left: number;
   };
 }
 
