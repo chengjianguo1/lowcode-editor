@@ -10,6 +10,14 @@ export class UserConfig {
     return this.store.getBlocksData();
   }
 
+  getCurrentIndex() {
+    return this.store.current;
+  }
+
+  getBlock() {
+    return this.store.getIndexBlock();
+  }
+
   forceUpdate() {
     this.store.forceUpdate();
   }

@@ -20,6 +20,7 @@ interface Block {
   id: string;
   component: any;
   focus: boolean;
+  drag: boolean;
   startX: number;
   startY: number;
   props: {

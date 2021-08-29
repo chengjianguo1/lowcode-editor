@@ -9,7 +9,12 @@ export const wrapperEvent = (wrapperRef: any, config?: UserConfig) => {
       const blocks = config?.getStoreData().block || [];
       const current = config?.store.getCurrent();
 
-      if (current !== undefined && current > -1 && blocks[current].focus) {
+      if (
+        current !== undefined &&
+        current > -1 &&
+        blocks[current].drag &&
+        blocks[current].focus
+      ) {
         // 焦点元素
         let { clientX: moveX, clientY: moveY } = e;
         let durX = moveX - blocks[current].startX;
@@ -40,7 +45,8 @@ export const wrapperEvent = (wrapperRef: any, config?: UserConfig) => {
       blocks = blocks.map((block) => {
         return {
           ...block,
-          focus: false,
+          // focus: false,
+          drag: false,
         };
       });
       if (current !== undefined && current > -1) {
@@ -57,6 +63,26 @@ export const wrapperEvent = (wrapperRef: any, config?: UserConfig) => {
       const newBlocks = deepcopy(blocks);
       config?.store.setBlocks(newBlocks);
       config?.forceUpdate();
+    },
+    onClick() {
+      let blocks = config?.getStoreData().block || [];
+      const current = config?.store.getCurrent();
+      if (current !== undefined && current > -1) {
+        blocks[current].props = {
+          ...blocks[current].props,
+          left: blocks[current].props.style.left as number,
+          top: blocks[current].props.style.top as number,
+          style: {
+            ...blocks[current].props.style,
+          },
+        };
+        blocks[current].drag = false;
+      }
+
+      const newBlocks = deepcopy(blocks);
+      config?.store.setBlocks(newBlocks);
+      config?.forceUpdate();
+      config?.store.emit();
     },
   };
 };
@@ -78,6 +104,7 @@ export const blockEvent = (
         blocks[index].startY = e.clientY;
         console.log(e.clientX, e.clientY);
         blocks[index].focus = true; // 设置焦点
+        blocks[index].drag = true;
         config?.store?.setIndex(index);
         config?.store.setBlocks(deepcopy(blocks));
         config?.forceUpdate();

@@ -7,7 +7,7 @@ import React, {
 import { UserConfig } from '../userConfig';
 
 export interface Props extends AllHTMLAttributes<HTMLDivElement> {
-  config?: UserConfig;
+  config: UserConfig;
   classNames?: string;
   style?: CSSProperties;
   extra?: ReactNode;
