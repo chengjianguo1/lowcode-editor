@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from 'react';
 import { Input } from 'antd';
 import classnames from 'classnames';
 
+import ResizeBlock from './resizeHandle';
 import { InputComProps, IConfig } from '../../components/interface';
 import './index.less';
 
@@ -21,7 +22,18 @@ export default function InputCom(
   } = props;
 
   return (
-    <>
+    <div
+      style={{
+        ...style,
+        height: style?.height + 'px',
+        width: style?.width + 'px',
+      }}
+      className={classnames({
+        focus: focus,
+        custom_img: true,
+      })}
+      {...blockEvent(config, index, id)}
+    >
       <Input
         className={classnames({
           focus: focus,
@@ -29,13 +41,12 @@ export default function InputCom(
         })}
         value={text}
         style={{
-          ...style,
           height: style?.height + 'px',
-          widht: style?.width + 'px',
         }}
         {...rest}
-        {...blockEvent(config, index, id)}
+        // {...blockEvent(config, index, id)}
       ></Input>
-    </>
+      <ResizeBlock {...{ config: config, index: index }} />
+    </div>
   );
 }

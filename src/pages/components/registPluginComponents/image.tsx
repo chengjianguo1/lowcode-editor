@@ -2,6 +2,7 @@ import { UserConfig } from '@/pages/userConfig';
 import React, { PropsWithChildren, useState, useRef } from 'react';
 import classnames from 'classnames';
 
+import ResizeBlock from './resizeHandle';
 import { ImageComProps } from '../../components/interface';
 import './index.less';
 
@@ -32,16 +33,22 @@ export default function ImageCom(
   // console.log(props, 'props');
 
   return (
-    <>
+    <div
+      style={{
+        ...style,
+        height: style?.height + 'px',
+        width: style?.width + 'px',
+      }}
+      className={classnames({
+        focus: focus,
+        custom_img: true,
+      })}
+      {...blockEvent(config, index, id)}
+    >
       <img
-        className={classnames({
-          focus: focus,
-          custom_img: true,
-        })}
-        ref={domRef}
         src={url}
         style={{
-          ...style,
+          // objectFit: 'contain',
           height: style?.height + 'px',
           width: style?.width + 'px',
         }}
@@ -50,8 +57,8 @@ export default function ImageCom(
         //   console.log(id, domRef);
         //   // todo 找到当前焦点元素
         // }}
-        {...blockEvent(config, index, id)}
       />
-    </>
+      <ResizeBlock {...{ config: config, index: index }} />
+    </div>
   );
 }
