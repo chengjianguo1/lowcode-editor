@@ -37,16 +37,14 @@ const onmusedown = (
 const onmuseup = (e: React.MouseEvent, index: number, config: UserConfig) => {
   const blocks = config?.getStoreData().block || [];
   if (index !== undefined && index > -1 && blocks[index]) {
-    console.log(e, '++++++');
-
     blocks[index].startHeight = blocks[index].props.style.height;
     blocks[index].startWidth = blocks[index].props.style.width;
 
     blocks[index].focus = true; // 设置焦点
     blocks[index].resize = false;
     config?.store?.setIndex(index);
-    /*  config?.store.setBlocks(deepcopy(blocks));
-        config?.forceUpdate(); */
+    config?.store.setBlocks(deepcopy(blocks));
+    config?.forceUpdate();
   }
 };
 

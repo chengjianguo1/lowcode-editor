@@ -24,8 +24,8 @@ interface Block {
   drag: boolean;
   startX: number;
   startY: number;
-  startWidth: number;
-  startHeight: number;
+  startWidth: number | string | undefined;
+  startHeight: number | string | undefined;
   resize: boolean;
   direction: DirectionType;
   props: {

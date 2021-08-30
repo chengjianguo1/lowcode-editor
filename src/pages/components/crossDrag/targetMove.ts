@@ -66,11 +66,36 @@ export const wrapperEvent = (wrapperRef: any, config?: UserConfig) => {
           height = parseInt(height) - durY;
           top = top + durY;
         }
+        if (blocks[current].direction === 'b' && width) {
+          height = parseInt(height) + durY;
+        }
+        if (blocks[current].direction === 'r') {
+          width = parseInt(width) + durX;
+        }
+
+        if (blocks[current].direction === 'lt') {
+          height = parseInt(height) - durY;
+          width = parseInt(width) - durX;
+          left = left + durX;
+          top = top + durY;
+        }
+        if (blocks[current].direction === 'rt') {
+          height = parseInt(height) - durY;
+          width = parseInt(width) + durX;
+          top = top + durY;
+        }
+        if (blocks[current].direction === 'lb') {
+          height = parseInt(height) + durY;
+          width = parseInt(width) - durX;
+          left = left + durX;
+        }
+        if (blocks[current].direction === 'rb') {
+          height = parseInt(height) + durY;
+          width = parseInt(width) + durX;
+        }
 
         blocks[current].props = {
           ...blocks[current].props,
-          /* left: left,
-           top: top, */
           style: {
             ...blocks[current].props.style,
             width: width,
@@ -97,6 +122,13 @@ export const wrapperEvent = (wrapperRef: any, config?: UserConfig) => {
         };
       });
       if (current !== undefined && current > -1) {
+        // resize 拖动放大缩小元素
+        blocks[current].startHeight = blocks[current].props.style.height;
+        blocks[current].startWidth = blocks[current].props.style.width;
+
+        blocks[current].focus = true; // 设置焦点
+        blocks[current].resize = false;
+
         blocks[current].props = {
           ...blocks[current].props,
           left: blocks[current].props.style.left as number,
