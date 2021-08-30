@@ -11,5 +11,83 @@
 }
 
 .focus {
-  border: 1px solid blue;
+  // border: 1px solid blue;
+  /* height: 6px;
+  width: 6px;
+  position: absolute;
+	cursor: pointer; */
+  // border-radius: 50%;
+  &::after {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    content: '';
+    border: 2px dashed #2196f3;
+  }
+}
+
+.pointer {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  cursor: pointer;
+  background-color: blueviolet;
+}
+
+.pointer.t {
+  position: absolute;
+  top: -4px;
+  left: calc(50% - 3px);
+  z-index: 100;
+}
+
+.pointer.b {
+  position: absolute;
+  bottom: -4px;
+  left: calc(50% - 3px);
+  z-index: 100;
+}
+
+.pointer.r {
+  position: absolute;
+  right: -4px;
+  top: calc(50% - 3px);
+  z-index: 100;
+}
+
+.pointer.l {
+  position: absolute;
+  left: -4px;
+  top: calc(50% - 3px);
+  z-index: 100;
+}
+
+.pointer.lt {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  z-index: 100;
+}
+
+.pointer.lb {
+  position: absolute;
+  bottom: -4px;
+  left: -4px;
+  z-index: 100;
+}
+
+.pointer.rt {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  z-index: 100;
+}
+
+.pointer.rb {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  z-index: 100;
 }

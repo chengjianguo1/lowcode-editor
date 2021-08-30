@@ -14,6 +14,7 @@
 //   props: Record<string, any>;
 // }
 import { CSSProperties } from 'react';
+import { DirectionType } from '../components/registPluginComponents/regist.interface';
 
 interface Block {
   type: string;
@@ -23,6 +24,10 @@ interface Block {
   drag: boolean;
   startX: number;
   startY: number;
+  startWidth: number;
+  startHeight: number;
+  resize: boolean;
+  direction: DirectionType;
   props: {
     text?: string;
     url?: string;

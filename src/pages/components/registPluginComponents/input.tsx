@@ -28,7 +28,11 @@ export default function InputCom(
           custom_input: true,
         })}
         value={text}
-        style={style}
+        style={{
+          ...style,
+          height: style?.height + 'px',
+          widht: style?.width + 'px',
+        }}
         {...rest}
         {...blockEvent(config, index, id)}
       ></Input>

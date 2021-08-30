@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import classnames from 'classnames';
 
+import ResizeBlock from './resizeHandle';
 import { InputComProps, IConfig } from '../../components/interface';
 import './index.less';
 
@@ -21,15 +22,24 @@ export default function TextCom(
 
   return (
     <div
-      className={classnames({
-        focus: focus,
-        custom_text: true,
-      })}
-      style={style}
-      {...rest}
-      {...blockEvent(config, index, id)}
+      style={{
+        ...style,
+        height: style?.height + 'px',
+        width: style?.width + 'px',
+      }}
     >
-      {text}
+      <div
+        className={classnames({
+          focus: focus,
+          custom_text: true,
+        })}
+        // style={style}
+        {...rest}
+        {...blockEvent(config, index, id)}
+      >
+        {text}
+      </div>
+      <ResizeBlock {...{ config: config, index: index }} />
     </div>
   );
 }

@@ -9,6 +9,7 @@ export const wrapperEvent = (wrapperRef: any, config?: UserConfig) => {
       const blocks = config?.getStoreData().block || [];
       const current = config?.store.getCurrent();
 
+      // drag
       if (
         current !== undefined &&
         current > -1 &&
@@ -38,6 +39,51 @@ export const wrapperEvent = (wrapperRef: any, config?: UserConfig) => {
         config?.store.setBlocks(newBlocks);
         config?.forceUpdate();
       }
+      // resize
+      if (
+        current !== undefined &&
+        current > -1 &&
+        blocks[current].resize &&
+        blocks[current].focus
+      ) {
+        // 焦点元素
+        console.log(blocks[current].direction, blocks[current].props);
+        let { clientX: moveX, clientY: moveY } = e;
+        let durX = moveX - blocks[current].startX;
+        let durY = moveY - blocks[current].startY;
+
+        let left = blocks[current].props.left;
+        let top = blocks[current].props.top;
+        let width: any = blocks[current].startWidth;
+        let height: any = blocks[current].startHeight;
+
+        // todo 待优化
+        if (blocks[current].direction === 'l' && width) {
+          width = parseInt(width) - durX;
+          left = left + durX;
+        }
+        if (blocks[current].direction === 't') {
+          height = parseInt(height) - durY;
+          top = top + durY;
+        }
+
+        blocks[current].props = {
+          ...blocks[current].props,
+          /* left: left,
+           top: top, */
+          style: {
+            ...blocks[current].props.style,
+            width: width,
+            height: height,
+            left: left,
+            top: top,
+          },
+        };
+
+        const newBlocks = deepcopy(blocks);
+        config?.store.setBlocks(newBlocks);
+        config?.forceUpdate();
+      }
     },
     onMouseUp() {
       let blocks = config?.getStoreData().block || [];
@@ -46,6 +92,7 @@ export const wrapperEvent = (wrapperRef: any, config?: UserConfig) => {
         return {
           ...block,
           // focus: false,
+          resize: false,
           drag: false,
         };
       });
@@ -77,6 +124,7 @@ export const wrapperEvent = (wrapperRef: any, config?: UserConfig) => {
           },
         };
         blocks[current].drag = false;
+        // blocks[current].focus = !blocks[current].focus;
       }
 
       const newBlocks = deepcopy(blocks);

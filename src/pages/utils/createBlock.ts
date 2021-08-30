@@ -6,8 +6,11 @@ interface Block {
   id: string;
   component: any;
   focus: boolean;
+  resize: boolean;
   startX: number;
   startY: number;
+  startWidth: number;
+  startHeight: number;
   props: {
     text?: string;
     url?: string;
@@ -28,6 +31,7 @@ export function createUid(name?: string) {
 
 export function createBlock(block: Block) {
   return {
+    ...block,
     type: block.type,
     id: block.id,
     component: block.component,

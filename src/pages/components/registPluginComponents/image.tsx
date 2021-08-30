@@ -40,7 +40,11 @@ export default function ImageCom(
         })}
         ref={domRef}
         src={url}
-        style={style}
+        style={{
+          ...style,
+          height: style?.height + 'px',
+          width: style?.width + 'px',
+        }}
         {...rest}
         // onClick={() => {
         //   console.log(id, domRef);

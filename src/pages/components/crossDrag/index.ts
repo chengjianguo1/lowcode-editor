@@ -56,8 +56,21 @@ export const dragContainerEventResolve = function (
             component: registComponent,
             id: createUid(),
             focus: false,
+            resize: false,
             startX: offsetX,
             startY: offestY,
+            startHeight:
+              currentDrag.type === 'image'
+                ? 100
+                : currentDrag.type === 'text'
+                ? 22
+                : 30,
+            startWidth:
+              currentDrag.type === 'image'
+                ? 100
+                : currentDrag.type === 'text'
+                ? 50
+                : 150,
             props: {
               // url: 'https://img.alicdn.com/imgextra/i3/O1CN01UfX9Vf1VJ2iJR2dAF_!!6000000002631-2-tps-572-522.png',
               url: 'https://rex-multimedia-pre.oss-cn-hangzhou.aliyuncs.com/extra/media/images/21f3a4cf-e404-46e5-9cc9-66384a5c3abc.png',
@@ -70,8 +83,18 @@ export const dragContainerEventResolve = function (
                 position: 'absolute',
                 left: offsetX,
                 top: offestY,
-                width: currentDrag.type === 'image' ? '100px' : 'auto',
-                height: currentDrag.type === 'image' ? '100px' : 'auto',
+                width:
+                  currentDrag.type === 'image'
+                    ? '100'
+                    : currentDrag.type === 'text'
+                    ? '50'
+                    : '150',
+                height:
+                  currentDrag.type === 'image'
+                    ? '100'
+                    : currentDrag.type === 'text'
+                    ? '22'
+                    : '30',
               },
             },
           });
